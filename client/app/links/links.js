@@ -1,35 +1,19 @@
 angular.module('shortly.links', [])
 
-// .controller('LinksController', function ($scope, Links) {
-//   // Your code here
-// });
-
-.controller('LinksController', function ($scope, Links, LinksFactory) {
+.controller('LinksController', function ($scope, Links) {
   // Your code here
-  console.log('mockLinks: ', LinksFactory.getLinks());
-  $scope.test = 'hey';
-  $scope.getLinks = LinksFactory.getLinks;
-  $scope.data = {links: ($scope.getLinks())};
-  // console.log('$scope: ', $scope);
-  // console.log('links: ', Links);
-  // console.log('linksfactory: ', LinksFactory);
-
-})
-
-.factory('LinksFactory', function($http) {
-  var getLinks = function() {
-    $http({
-      method: 'GET',
-      url: '/api/links',
-    })
-    .then(function(response) {
-      console.log('response: ', response);
-      return response;
-    });
+  //
+  $scope.data = {};
+  $scope.getLinks = function() {
+    Links.getLinks()
+      .then(function(links){
+        $scope.data.links = links;
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
   };
+  $scope.getLinks();
 
-  return {
-    getLinks: getLinks
-  };
-
+  console.log('scope.data.links: ', $scope.data.links);
 });
