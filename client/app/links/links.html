@@ -1,5 +1,13 @@
 <div id='container' ng-controller='LinksController'>
   <!-- Your html here -->
+  <div class='navigation'>
+  <ul>
+    <li><a href='#/links' class='index'>All Links</a></li>
+    <li><a href='#/shorten' class='create'>Shorten</a></li>
+    <li style="float: right"><a href='/logout'>Logout</a></li>
+  </ul>
+  </div>
+  <div id='container'></div>
   <h1>{{ data }}</h1>
   <a href="#/links">Links</a>
 

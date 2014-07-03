@@ -8,9 +8,14 @@ module.exports = function (app, express) {
   var userRouter = express.Router();
   var linkRouter = express.Router();
 
+  // attaching middleware to server, each request coming through goes through these middlewares
   app.use(morgan('dev'));
+  // attach form data to request.body
   app.use(bodyParser.urlencoded({extended: true}));
+  console.log("Before bodyParser.json");
   app.use(bodyParser.json());
+  console.log("Parser ", bodyParser.json());
+  console.log("After bodyParser.json");
   app.use(express.static(__dirname + '/../../client'));
 
 
@@ -24,5 +29,6 @@ module.exports = function (app, express) {
 
   // inject our routers into their perspective route files
   require('../users/userRoutes.js')(userRouter);
+  console.log("Link Router ", linkRouter);
   require('../links/linkRoutes.js')(linkRouter);
 };

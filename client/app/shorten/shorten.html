@@ -1,5 +1,25 @@
-<div id='container'>
+<div id='container' ng-controller='ShortenController'>
 <!-- Your code here -->
+
+  <div class='navigation'>
+  <ul>
+    <li><a href='#/links' class='index'>All Links</a></li>
+    <li><a href='#/shorten' class='create'>Shorten</a></li>
+    <li style="float: right"><a href='/logout'>Logout</a></li>
+  </ul>
+  </div>
+
+
+  <form name="shorten input" ng-submit='addLink()'>
+    <!-- <input class='text' type='text' name='url'> -->
+    <input type='text'ng-model='link.url'>
+    <input type='submit' value='Shorten'>
+  </form>
+  <!-- <img class='spinner' src='../assets/spiffygif_46x46.gif'> -->
+  <div class='message'></div>
+
+  <h1>{{ link }}</h1>
+  <a href="#/shorten">Shorten</a>
 
 </div>
 

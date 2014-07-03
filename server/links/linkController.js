@@ -5,6 +5,7 @@ var Link    = require('./linkModel.js'),
 
 module.exports = {
   findUrl: function (req, res, next, code) {
+    console.log('req in findUrl: ', req);
     var findLink = Q.nbind(Link.findOne, Link);
     findLink({code: code})
       .then(function (link) {
@@ -33,8 +34,9 @@ module.exports = {
   },
 
   newLink: function (req, res, next) {
+    console.log("Inside newLink");
     var url = req.body.url;
-    console.log(req.body);
+    console.log('req.body: ',req.body);
     if (!util.isValidUrl(url)) {
       return next(new Error('Not a valid url'));
     }
@@ -68,6 +70,7 @@ module.exports = {
       })
       .fail(function (error) {
         next(error);
+        console.error('error: ', error);
       });
   },
 
