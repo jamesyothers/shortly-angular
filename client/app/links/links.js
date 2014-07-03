@@ -13,8 +13,7 @@ angular.module('shortly.links', [])
         console.error(error);
       });
   };
-  console.log('links: ', $scope.getLinks());
+  $scope.getLinks();
 
 
-  console.log('scope.data.links: ', $scope.data.links);
 });

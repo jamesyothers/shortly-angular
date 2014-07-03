@@ -9,13 +9,25 @@ angular.module('shortly.services', [])
       url: '/api/links',
     })
     .then(function(response) {
-      console.log('response: ', response);
+      //console.log('response: ', response);
       return response.data;
     });
   };
 
+  var postLinks = function(link) {
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: link
+    })
+    .then(function(response) {
+      return response.status;
+    });
+  };
+
   return {
-    getLinks: getLinks
+    getLinks: getLinks,
+    postLinks: postLinks
   };
 
 })
