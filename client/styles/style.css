@@ -141,3 +141,10 @@ input[type=url] {
 .creator .message {
   clear: both;
 }
+
+.redirect {
+  height: 3.7%;
+  width: 3.7%;
+
+
+}

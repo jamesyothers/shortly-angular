@@ -9,17 +9,20 @@
   </ul>
   </div>
 
-
-  <form name="shorten input" ng-submit='addLink()'>
-    <!-- <input class='text' type='text' name='url'> -->
-    <input type='text'ng-model='link.url'>
-    <input type='submit' value='Shorten'>
+  <!-- call the addLink() function when you lick on submit form button -->
+  <form name="shortenInput" ng-submit='addLink()'>
+    <input type='url' ng-model='link.url' required />
+    <input type='submit' value='Shorten' />
   </form>
-  <!-- <img class='spinner' src='../assets/spiffygif_46x46.gif'> -->
-  <div class='message'></div>
+  <!-- show the error message when no input in box -->
+  <small class="error" ng-show="shortenInput.$error.required">
+    URL required
+  </small>
+  <!-- show error when not a valid url in the input box -->
+  <small class="error" ng-show="shortenInput.$error.url">
+    Not a valid URL
+  </small>
 
-  <h1>{{ link }}</h1>
-  <a href="#/shorten">Shorten</a>
 
 </div>
 

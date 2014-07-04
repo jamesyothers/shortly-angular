@@ -7,8 +7,17 @@
     <li style="float: right"><a href='/logout'>Logout</a></li>
   </ul>
   </div>
-  <div id='container'></div>
-  <h1>{{ data }}</h1>
-  <a href="#/links">Links</a>
+  <!-- ng-model='search' is how you display only matches in the ng-repeat
+  the 'placeholder' is what is displayed in the text box -->
+  <input type='text' ng-model='search' placeholder='filter'/>
+  <div class='links'>
+  <!-- filter (placeholder) by search (ng-model) -->
+      <div class='repeat-links' ng-repeat="l in data.links | filter:search | orderBy: 'created_at'">
+      <!-- l.code is the shortened url, the img src makes the image clickable in the anchor tag -->
+        <a href="http://localhost:8000/api/links/{{l.code}}"><img src="../assets/redirect_icon.png"></a>
+
+        {{ l.title }} {{ l.url }} visits: {{ l.visits }}
+      </div>
+  </div>
 
 </div>

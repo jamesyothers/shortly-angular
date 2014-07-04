@@ -1,8 +1,8 @@
 angular.module('shortly.links', [])
 
+// pass in the Links controller to have post and get functions
 .controller('LinksController', function ($scope, Links) {
-  // Your code here
-  //
+
   $scope.data = {};
   $scope.getLinks = function() {
     Links.getLinks()
